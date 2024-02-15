@@ -1,0 +1,151 @@
+Name:    Marshal Pfluger
+Course:  COSC 4302 Operating Systems
+Project: Capstone
+
+
+
+Enter the initial amount of memory: 3 KB
+
+
+allocator>RQ P0 100 F
+
+Allocated memory for process P0 using First Fit.
+
+allocator>STAT
+Addresses [0:99] Process P0
+Addresses [100:3071] Process Unused
+
+
+allocator>C
+
+Memory compacted.
+
+
+allocator>STAT
+Addresses [0:99] Process P0
+Addresses [100:3071] Process Unused
+
+
+allocator>RQ P1 100 B
+
+Allocated memory for process P1 using Best Fit.
+
+allocator>STAT
+Addresses [0:99] Process P0
+Addresses [100:199] Process P1
+Addresses [200:3071] Process Unused
+
+
+allocator>RQ P0 100 F
+
+Allocated memory for process P0 using First Fit.
+
+allocator>RQ P3 100 F
+
+Allocated memory for process P3 using First Fit.
+
+allocator>RQ P2 100 F
+
+Allocated memory for process P2 using First Fit.
+
+allocator>RQ P4 100 F
+
+Allocated memory for process P4 using First Fit.
+
+allocator>RQ P3 100 W
+
+Allocated memory for process P3 using Worst Fit.
+
+allocator>STAT
+Addresses [0:99] Process P0
+Addresses [100:199] Process P1
+Addresses [200:299] Process P0
+Addresses [300:399] Process P3
+Addresses [400:499] Process P2
+Addresses [500:599] Process P4
+Addresses [600:699] Process P3
+Addresses [700:3071] Process Unused
+
+
+allocator>RL P3
+
+Released memory for process P3
+
+allocator>STAT
+Addresses [0:99] Process P0
+Addresses [100:199] Process P1
+Addresses [200:299] Process P0
+Addresses [300:399] Process Unused
+Addresses [400:499] Process P2
+Addresses [500:599] Process P4
+Addresses [600:699] Process Unused
+Addresses [700:3071] Process Unused
+
+
+allocator>RQ 100 P3 W
+
+Invalid command parameters, try again
+
+
+allocator>RQ P3 100 W
+
+Allocated memory for process P3 using Worst Fit.
+
+allocator>STAT
+Addresses [0:99] Process P0
+Addresses [100:199] Process P1
+Addresses [200:299] Process P0
+Addresses [300:399] Process Unused
+Addresses [400:499] Process P2
+Addresses [500:599] Process P4
+Addresses [600:699] Process Unused
+Addresses [700:799] Process P3
+Addresses [800:3071] Process Unused
+
+
+allocator>RQ P3 100 B
+
+Allocated memory for process P3 using Best Fit.
+
+allocator>STAT
+Addresses [0:99] Process P0
+Addresses [100:199] Process P1
+Addresses [200:299] Process P0
+Addresses [300:399] Process P3
+Addresses [400:499] Process P2
+Addresses [500:599] Process P4
+Addresses [600:699] Process Unused
+Addresses [700:799] Process P3
+Addresses [800:3071] Process Unused
+
+
+allocator>C
+
+Memory compacted.
+
+
+allocator>STAT
+Addresses [0:199] Process P0
+Addresses [200:299] Process P1
+Addresses [300:399] Process P2
+Addresses [400:599] Process P3
+Addresses [600:699] Process P4
+Addresses [700:3071] Process Unused
+
+
+allocator>RQ P1 10000 F
+
+Error: Insufficient memory to allocate for process P1 using First Fit.
+
+allocator>STAT
+Addresses [0:199] Process P0
+Addresses [200:299] Process P1
+Addresses [300:399] Process P2
+Addresses [400:599] Process P3
+Addresses [600:699] Process P4
+Addresses [700:3071] Process Unused
+
+
+allocator>X
+
+Program has terminated, See you later Allocator
